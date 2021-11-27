@@ -10,7 +10,7 @@ import java.io.IOException;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Scene scene = new Scene(new View(), 320, 240);
+        Scene scene = new Scene(new View());
         stage.setScene(scene);
         stage.show();
     }
