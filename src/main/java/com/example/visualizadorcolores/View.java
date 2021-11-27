@@ -28,6 +28,7 @@ public class View extends VBox {
 
          colorBox = new Label ("");
 
+         // TEXTO DE CADA COLOR
          redColorText = new Label ("Red");
          redColorText.setMinWidth(32);
 
@@ -37,6 +38,7 @@ public class View extends VBox {
          blueColorText = new Label("Blue");
          blueColorText.setMinWidth(32);
 
+         // TEXTO NUMERICO DE CADA COLOR
          numRed = new Label("");
          numRed.setMinWidth(20);
 
@@ -46,10 +48,12 @@ public class View extends VBox {
          numBlue = new Label("");
          numBlue.setMinWidth(20);
 
+         // DESLIZADOR DE CADA COLOR
          sliderRed = new Slider(0,255,128);
          sliderGreen = new Slider(0,255,128);
          sliderBlue = new Slider(0,255,128);
 
+         // ORGANIZACION FILAS
          rowOne = new HBox(redColorText, sliderRed, numRed);
          rowOne.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
@@ -70,6 +74,7 @@ public class View extends VBox {
 
          this.getChildren().addAll(colorBox, rowOne, rowTwo, rowThree);
 
+         // FORMACION DEL CONTROLADOR
         control = new Controller(
                 colorBox,
                 sliderRed, numRed,

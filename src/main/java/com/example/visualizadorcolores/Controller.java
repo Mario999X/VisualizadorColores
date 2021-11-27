@@ -41,13 +41,14 @@ public class Controller {
         valueGreen.bind(sliderGreen.valueProperty());
         valueBlue.bind(sliderBlue.valueProperty());
 
-        valueRed.addListener((v, ov, nv)->cambioColor());
-        valueGreen.addListener((v, ov, nv)->cambioColor());
-        valueBlue.addListener((v, ov, nv)->cambioColor());
+        valueRed.addListener((v, ov, nv)-> changeColor());
+        valueGreen.addListener((v, ov, nv)-> changeColor());
+        valueBlue.addListener((v, ov, nv)-> changeColor());
 
     }
 
-    private void cambioColor() {
+    // Metodo cambiar color
+    private void changeColor() {
         colorBox.setBackground(new Background(new BackgroundFill
                 (Color.rgb(valueRed.get(), valueGreen.get(), valueBlue.get()), null, null)));
     }
