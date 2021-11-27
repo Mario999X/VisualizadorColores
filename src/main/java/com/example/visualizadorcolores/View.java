@@ -8,26 +8,16 @@ import javafx.scene.layout.VBox;
 
 public class View extends VBox {
 
-    private Label caja;
-    private HBox filaUno;
-    private HBox filaDos;
-    private HBox filaTres;
-    private Label colorUno;
-    private Label colorDos;
-    private Label colorTres;
-    private Label numUno;
-    private Label numDos;
-    private Label numTres;
-    private Slider deslizadorUno;
-    private Slider deslizadorDos;
-    private Slider deslizadorTres;
+    private Label colorBox;
+    private HBox rowOne, rowTwo, rowThree;
+    private Label redColorText, greenColorText, blueColorText;
+    private Label numRed, numGreen, numBlue;
+    private Slider sliderRed, sliderGreen, sliderBlue;
     private Controller control;
 
-    public View(){
 
-    initView();
+    public View(){initView();}
 
-    }
 
     public void initView(){
 
@@ -36,54 +26,54 @@ public class View extends VBox {
         this.setMinSize(180, 100);
         this.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
-         caja = new Label ("");
+         colorBox = new Label ("");
 
-         colorUno = new Label ("Red");
-         colorUno.setMinWidth(32);
+         redColorText = new Label ("Red");
+         redColorText.setMinWidth(32);
 
-         colorDos = new Label("Green");
-         colorDos.setMinWidth(32);
+         greenColorText = new Label("Green");
+         greenColorText.setMinWidth(32);
 
-         colorTres = new Label("Blue");
-         colorTres.setMinWidth(32);
+         blueColorText = new Label("Blue");
+         blueColorText.setMinWidth(32);
 
-         numUno = new Label("");
-         numUno.setMinWidth(20);
+         numRed = new Label("");
+         numRed.setMinWidth(20);
 
-         numDos = new Label("");
-         numDos.setMinWidth(20);
+         numGreen = new Label("");
+         numGreen.setMinWidth(20);
 
-         numTres = new Label("");
-         numTres.setMinWidth(20);
+         numBlue = new Label("");
+         numBlue.setMinWidth(20);
 
-         deslizadorUno = new Slider(0,255,128);
-         deslizadorDos = new Slider(0,255,128);
-         deslizadorTres = new Slider(0,255,128);
+         sliderRed = new Slider(0,255,128);
+         sliderGreen = new Slider(0,255,128);
+         sliderBlue = new Slider(0,255,128);
 
-         filaUno = new HBox(colorUno, deslizadorUno, numUno);
-         filaUno.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+         rowOne = new HBox(redColorText, sliderRed, numRed);
+         rowOne.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
-         filaDos = new HBox(colorDos, deslizadorDos, numDos);
-         filaDos.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+         rowTwo = new HBox(greenColorText, sliderGreen, numGreen);
+         rowTwo.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
-         filaTres = new HBox(colorTres, deslizadorTres, numTres);
-         filaTres.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+         rowThree = new HBox(blueColorText, sliderBlue, numBlue);
+         rowThree.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
-         caja.prefWidthProperty().bind(this.widthProperty());
-         caja.prefHeightProperty().bind(this.heightProperty().subtract(filaUno.getHeight()).multiply(3));
-         deslizadorUno.prefWidthProperty().bind(
-                this.widthProperty().subtract(numUno.getWidth()).subtract(colorUno.getWidth()));
-         deslizadorDos.prefWidthProperty().bind(
-                this.widthProperty().subtract(numDos.getWidth()).subtract(colorDos.getWidth()));
-         deslizadorTres.prefWidthProperty().bind(
-                this.widthProperty().subtract(numTres.getWidth()).subtract(colorTres.getWidth()));
+         colorBox.prefWidthProperty().bind(this.widthProperty());
+         colorBox.prefHeightProperty().bind(this.heightProperty().subtract(rowOne.getHeight()).multiply(3));
+         sliderRed.prefWidthProperty().bind(
+                this.widthProperty().subtract(numRed.getWidth()).subtract(redColorText.getWidth()));
+         sliderGreen.prefWidthProperty().bind(
+                this.widthProperty().subtract(numGreen.getWidth()).subtract(greenColorText.getWidth()));
+         sliderBlue.prefWidthProperty().bind(
+                this.widthProperty().subtract(numBlue.getWidth()).subtract(blueColorText.getWidth()));
 
-         this.getChildren().addAll(caja, filaUno, filaDos, filaTres);
+         this.getChildren().addAll(colorBox, rowOne, rowTwo, rowThree);
 
         control = new Controller(
-                caja,
-                deslizadorUno, numUno,
-                deslizadorDos, numDos,
-                deslizadorTres, numTres);
+                colorBox,
+                sliderRed, numRed,
+                sliderGreen, numGreen,
+                sliderBlue, numBlue);
     }
 }

@@ -2,62 +2,53 @@ package com.example.visualizadorcolores;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
 public class Controller {
 
-    private Label caja;
-    private Label colorUno;
-    private Label colorDos;
-    private Label colorTres;
-    private Label numUno;
-    private Label numDos;
-    private Label numTres;
-    private Slider deslizadorUno;
-    private Slider deslizadorDos;
-    private Slider deslizadorTres;
-    private IntegerProperty valorUno, valorDos, valorTres;
+    private Label colorBox;
+    private Label numRed, numGreen, numBlue;
+    private Slider sliderRed, sliderGreen, sliderBlue;
+    private IntegerProperty valueRed, valueGreen, valueBlue;
 
-    public Controller(Label caja, Slider deslizadorUno, Label numUno, Slider deslizadorDos, Label numDos,
-        Slider deslizadorTres, Label numTres){
+    public Controller(Label coloBox, Slider sliderRed, Label numRed, Slider sliderGreen, Label numGreen,
+        Slider sliderBlue, Label numBlue){
 
-        this.caja = caja;
+        this.colorBox = coloBox;
 
-        this.deslizadorUno = deslizadorUno;
-        this.numUno = numUno;
+        this.sliderRed = sliderRed;
+        this.numRed = numRed;
 
-        this.deslizadorDos = deslizadorDos;
-        this.numDos = numDos;
+        this.sliderGreen = sliderGreen;
+        this.numGreen = numGreen;
 
-        this.deslizadorTres = deslizadorTres;
-        this.numTres = numTres;
+        this.sliderBlue = sliderBlue;
+        this.numBlue = numBlue;
 
-        valorUno=new SimpleIntegerProperty();
-        valorDos=new SimpleIntegerProperty();
-        valorTres=new SimpleIntegerProperty();
+        valueRed =new SimpleIntegerProperty();
+        valueGreen =new SimpleIntegerProperty();
+        valueBlue =new SimpleIntegerProperty();
 
-        numUno.textProperty().bind(valorUno.asString());
-        numDos.textProperty().bind(valorDos.asString());
-        numTres.textProperty().bind(valorTres.asString());
+        numRed.textProperty().bind(valueRed.asString());
+        numGreen.textProperty().bind(valueGreen.asString());
+        numBlue.textProperty().bind(valueBlue.asString());
 
-        valorUno.bind(deslizadorUno.valueProperty());
-        valorDos.bind(deslizadorDos.valueProperty());
-        valorTres.bind(deslizadorTres.valueProperty());
+        valueRed.bind(sliderRed.valueProperty());
+        valueGreen.bind(sliderGreen.valueProperty());
+        valueBlue.bind(sliderBlue.valueProperty());
 
-        valorUno.addListener((v, ov, nv)->cambioColor());
-        valorDos.addListener((v, ov, nv)->cambioColor());
-        valorTres.addListener((v, ov, nv)->cambioColor());
+        valueRed.addListener((v, ov, nv)->cambioColor());
+        valueGreen.addListener((v, ov, nv)->cambioColor());
+        valueBlue.addListener((v, ov, nv)->cambioColor());
 
     }
 
     private void cambioColor() {
-        caja.setBackground(new Background(new BackgroundFill
-                (Color.rgb(valorUno.get(), valorDos.get(), valorTres.get()), null, null)));
+        colorBox.setBackground(new Background(new BackgroundFill
+                (Color.rgb(valueRed.get(), valueGreen.get(), valueBlue.get()), null, null)));
     }
 }
